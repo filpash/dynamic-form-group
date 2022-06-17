@@ -25,6 +25,7 @@ export class DynamicFormComponent implements OnInit {
         key: prop,
         label: this.formDataObj[prop].label,
         type: this.formDataObj[prop].type,
+        options: this.formDataObj[prop].options,
       });
     }
     this.form = new FormGroup(formDataObj);
