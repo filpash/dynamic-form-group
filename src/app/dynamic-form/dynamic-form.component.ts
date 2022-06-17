@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -8,25 +8,24 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class DynamicFormComponent implements OnInit {
 
+  @Input() formDataObj: any;
+
   public form: FormGroup;
-  // create formControls Obj names
-  public person: any = {
-    firstName: 'Juri',
-    age: 32,
-    surname: 'Ivanov',
-    twitter: 'ivan@guy'
-  }
-  public personProp: string[] = [];
+  public personProp: any[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
     // iterating all person Obj properties
     const formDataObj: any = {};
-    for (const prop of Object.keys(this.person)) {
-      formDataObj[prop] = new FormControl(this.person[prop]);
+    for (const prop of Object.keys(this.formDataObj)) {
+      formDataObj[prop] = new FormControl(this.formDataObj[prop].value);
       // add new form controls in person prop array
-      this.personProp.push(prop);
+      this.personProp.push({
+        key: prop,
+        label: this.formDataObj[prop].label,
+        type: this.formDataObj[prop].type,
+      });
     }
     this.form = new FormGroup(formDataObj);
   }
