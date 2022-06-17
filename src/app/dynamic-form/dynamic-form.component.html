@@ -1,4 +1,6 @@
 <form [formGroup]="form">
-  <input type="text" [formControlName]="fieldName">
+  <div *ngFor="let prop of personProp">
+    <input type="text" [formControlName]="prop">
+  </div>
 </form>
 <pre>{{ form.value | json }}</pre>
