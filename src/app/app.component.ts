@@ -12,12 +12,18 @@ export class AppComponent {
     firstName: {
       label: 'FirstName',
       value: 'Juri',
-      type: 'text'
+      type: 'text',
+      validators: {
+        required: true
+      }
     },
     age: {
       label: 'Age',
       value: 32,
-      type: 'number'
+      type: 'number',
+      validators: {
+        min: 18
+      }
     },
     gender: {
       label: 'Gender',
