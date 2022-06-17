@@ -22,6 +22,16 @@
         </option>
       </select>
     </div>
+
+    <div class="error" *ngIf="form.get(prop.key).invalid && form.get(prop.key).dirty">
+      <div *ngIf="form.get(prop.key).errors.required">
+        You have to provide a value.
+      </div>
+
+      <div *ngIf="form.get(prop.key).errors.min">
+        You have to provide a value greater or equal to {{ form.get(prop.key).errors.min.min }}.
+      </div>
+    </div>
   </div>
 </form>
 <pre>{{ form.value | json }}</pre>
