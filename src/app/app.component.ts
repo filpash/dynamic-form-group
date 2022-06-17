@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dynamic-form-group';
+
+  public person: any = {
+    firstName: {
+      label: 'FirstName',
+      value: 'Juri',
+      type: 'text'
+    },
+    age: {
+      label: 'Age',
+      value: 32,
+      type: 'number'
+    }
+  }
 }
